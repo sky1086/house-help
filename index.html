@@ -1,0 +1,567 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="The House Help — vetted maids, cooks, drivers, nannies, elder-care attendants and office staff in Gurugram & Delhi NCR.">
+<title>The House Help</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Karla:ital,wght@0,400;0,500;0,700;1,400&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  /* Single light theme, deliberately. White ground, deep green ink. */
+  :root{
+    color-scheme: light;
+    --ink:#152218;
+    --ink-soft:#5b6b60;
+    --paper:#ffffff;
+    --surface:#f7f9f6;
+    --line:#e3e8e1;
+    --primary:#2f5233;
+    --primary-strong:#1d3721;
+    --primary-tint:#ebf1e9;
+    --accent:#b07d18;
+    --accent-tint:#f8f0dd;
+    --focus:#1e63c9;
+    --shadow: 0 1px 2px rgba(21,34,24,.05), 0 10px 30px -18px rgba(21,34,24,.35);
+  }
+
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Karla",-apple-system,"Segoe UI",sans-serif;
+    font-size:16px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto}
+    *{animation-duration:.001ms !important; transition-duration:.001ms !important}
+  }
+  h1,h2,h3{
+    font-family:"Bricolage Grotesque",system-ui,sans-serif;
+    line-height:1.08;
+    letter-spacing:-.01em;
+    text-wrap:balance;
+    margin:0;
+    color:var(--ink);
+  }
+  a{color:inherit}
+  img,svg{max-width:100%}
+  .mono{
+    font-family:"JetBrains Mono",ui-monospace,monospace;
+    letter-spacing:.03em;
+    text-transform:uppercase;
+    font-size:.72rem;
+  }
+  .wrap{max-width:1120px;margin:0 auto;padding-inline:20px}
+  section{padding-block:clamp(48px,7vw,96px)}
+  a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{
+    outline:2.5px solid var(--focus);
+    outline-offset:2px;
+  }
+
+  /* ---------- Nav ---------- */
+  .nav{
+    position:sticky; top:0; z-index:40;
+    background:color-mix(in srgb, var(--paper) 88%, transparent);
+    backdrop-filter:saturate(140%) blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-row{
+    display:flex; align-items:center; justify-content:space-between;
+    padding-block:14px; gap:16px;
+  }
+  .brand{display:flex; align-items:center; gap:10px; text-decoration:none}
+  .brand-mark{width:34px;height:34px;flex:none}
+  .brand-word{font-family:"Bricolage Grotesque";font-weight:700;font-size:1.22rem;color:var(--ink);letter-spacing:-.02em}
+  .brand-word b{color:var(--primary)}
+  @media (max-width:420px){
+    .brand-word{font-size:1.02rem}
+    .brand-mark{width:28px;height:28px}
+    .nav-cta{padding:9px 14px; font-size:.82rem}
+  }
+  .nav-links{display:flex; align-items:center; gap:28px; list-style:none; margin:0; padding:0}
+  .nav-links a{text-decoration:none; font-weight:500; color:var(--ink-soft); font-size:.95rem}
+  .nav-links a:hover{color:var(--primary)}
+  .nav-cta{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--primary); color:#fff; text-decoration:none;
+    padding:10px 18px; border-radius:99px; font-weight:700; font-size:.9rem;
+    box-shadow:var(--shadow);
+  }
+  .nav-cta:hover{background:var(--primary-strong)}
+  .nav-toggle{display:none}
+  @media (max-width:760px){
+    .nav-links{display:none}
+    .nav-toggle{display:inline-flex}
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{padding-block:clamp(52px,9vw,108px) clamp(40px,6vw,72px)}
+  .hero-grid{
+    display:grid; grid-template-columns:1.1fr .9fr; gap:56px; align-items:center;
+  }
+  @media (max-width:860px){ .hero-grid{grid-template-columns:1fr} }
+  .eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--primary-tint); color:var(--primary-strong);
+    padding:6px 12px; border-radius:99px; font-weight:700; margin-bottom:18px;
+  }
+  .hero h1{font-size:clamp(2.1rem,4.6vw,3.4rem); font-weight:700}
+  .hero h1 em{font-style:normal; color:var(--primary)}
+  .hero p.lede{
+    margin-top:18px; max-width:46ch; color:var(--ink-soft); font-size:1.1rem;
+  }
+  .hero-ctas{display:flex; flex-wrap:wrap; gap:14px; margin-top:30px}
+  .btn{
+    display:inline-flex; align-items:center; gap:10px;
+    padding:14px 24px; border-radius:12px; font-weight:700; font-size:1rem;
+    text-decoration:none; border:1.5px solid transparent; cursor:pointer;
+    font-family:inherit;
+  }
+  .btn-primary{background:var(--accent); color:#241a06; box-shadow:var(--shadow)}
+  .btn-primary:hover{filter:brightness(0.95)}
+  .btn-ghost{background:transparent; border-color:var(--line); color:var(--ink)}
+  .btn-ghost:hover{border-color:var(--primary); color:var(--primary)}
+  .trust-strip{
+    display:flex; flex-wrap:wrap; gap:10px 22px; margin-top:34px;
+  }
+  .trust-strip span{
+    display:flex; align-items:center; gap:7px; color:var(--ink-soft);
+  }
+  .trust-strip svg{width:16px;height:16px; color:var(--primary); flex:none}
+
+  .hero-art{
+    position:relative; width:100%; aspect-ratio:1/1; max-width:420px; margin-inline:auto;
+  }
+  .hero-art svg{display:block; width:100%; height:100%}
+  /* SVG paint via CSS — var() does not resolve in presentation attributes */
+  .bm-bg{fill:var(--primary-tint)}
+  .bm-leaf{fill:var(--primary)}
+  .bm-stem{stroke:var(--primary)}
+  .ha-bg{fill:var(--surface)}
+  .ha-ring{stroke:var(--line); fill:none}
+  .ha-plant{stroke:var(--primary); fill:none}
+  .ha-line{stroke:var(--accent)}
+  .ha-dot{fill:var(--accent)}
+  .ha-pot{fill:var(--primary-tint); stroke:var(--primary)}
+
+  /* ---------- Section headers ---------- */
+  .sec-head{max-width:60ch; margin-bottom:40px}
+  .sec-head .mono{color:var(--accent); display:block; margin-bottom:10px}
+  .sec-head h2{font-size:clamp(1.7rem,3.2vw,2.3rem)}
+  .sec-head p{color:var(--ink-soft); margin-top:12px; font-size:1.04rem}
+
+  /* ---------- Services ---------- */
+  .services{background:var(--surface); border-block:1px solid var(--line)}
+  .svc-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:18px;
+  }
+  @media (max-width:860px){ .svc-grid{grid-template-columns:repeat(2,1fr)} }
+  @media (max-width:560px){ .svc-grid{grid-template-columns:1fr} }
+  .svc-card{
+    background:var(--paper); border:1px solid var(--line); border-radius:16px;
+    padding:24px; display:flex; flex-direction:column; gap:12px;
+  }
+  .svc-icon{
+    width:46px;height:46px; border-radius:12px; background:var(--primary-tint);
+    display:flex; align-items:center; justify-content:center; flex:none;
+  }
+  .svc-icon svg{width:24px;height:24px; color:var(--primary)}
+  .svc-card h3{font-size:1.08rem; font-weight:700}
+  .svc-card p{margin:0; color:var(--ink-soft); font-size:.94rem}
+
+  /* ---------- How it works ---------- */
+  .steps{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:20px; counter-reset:step;
+  }
+  @media (max-width:860px){ .steps{grid-template-columns:1fr 1fr} }
+  @media (max-width:520px){ .steps{grid-template-columns:1fr} }
+  .step{position:relative; padding-top:8px}
+  .step-num{
+    font-family:"Bricolage Grotesque"; font-weight:800; font-size:2.1rem;
+    color:var(--primary-tint); -webkit-text-stroke:1.5px var(--primary);
+    display:block; margin-bottom:10px;
+  }
+  .step h3{font-size:1.02rem; margin-bottom:6px}
+  .step p{margin:0; color:var(--ink-soft); font-size:.92rem}
+
+  /* ---------- Trust / verification ---------- */
+  .trust{background:var(--primary-strong); color:#fdfdf6}
+  .trust .sec-head h2{color:#fdfdf6}
+  .trust .sec-head p{color:#d9e6da}
+  .trust .sec-head .mono{color:var(--accent)}
+  .trust-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:16px 32px}
+  @media (max-width:700px){ .trust-grid{grid-template-columns:1fr} }
+  .trust-item{display:flex; gap:14px; align-items:flex-start}
+  .trust-item svg{width:22px;height:22px; color:var(--accent); flex:none; margin-top:2px}
+  .trust-item h3{font-size:1rem; color:#fff; margin-bottom:4px}
+  .trust-item p{margin:0; color:#cfe0d0; font-size:.92rem}
+
+  /* ---------- Areas ---------- */
+  .areas-grid{display:flex; flex-wrap:wrap; gap:10px}
+  .chip{
+    border:1px solid var(--line); border-radius:99px; padding:9px 16px;
+    font-size:.9rem; color:var(--ink-soft); background:var(--surface);
+  }
+  .areas-note{margin-top:18px; font-size:.9rem; color:var(--ink-soft)}
+
+  /* ---------- Contact ---------- */
+  .contact{background:var(--surface); border-block:1px solid var(--line)}
+  .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:start}
+  @media (max-width:860px){ .contact-grid{grid-template-columns:1fr} }
+  .contact-card{
+    background:var(--paper); border:1px solid var(--line); border-radius:18px; padding:28px;
+  }
+  .contact-quick{display:flex; flex-direction:column; gap:16px; margin-top:22px}
+  .quick-row{
+    display:flex; align-items:center; gap:14px; text-decoration:none; color:var(--ink);
+    padding:14px 16px; border:1px solid var(--line); border-radius:12px; background:var(--surface);
+  }
+  .quick-row:hover{border-color:var(--primary)}
+  .quick-row svg{width:20px;height:20px; color:var(--primary); flex:none}
+  .quick-row .label{font-size:.78rem; color:var(--ink-soft)}
+  .quick-row .value{font-weight:700}
+
+  .field{display:flex; flex-direction:column; gap:6px; margin-bottom:16px}
+  .field label{font-size:.82rem; font-weight:700; color:var(--ink-soft)}
+  .field input, .field select, .field textarea{
+    font-family:inherit; font-size:.98rem; padding:11px 13px;
+    border:1.5px solid var(--line); border-radius:10px; background:var(--surface); color:var(--ink);
+  }
+  .field textarea{resize:vertical; min-height:80px}
+  .form-note{font-size:.82rem; color:var(--ink-soft); margin-top:4px}
+
+  /* ---------- Footer ---------- */
+  footer{padding-block:40px; border-top:1px solid var(--line)}
+  .foot-row{
+    display:flex; flex-wrap:wrap; justify-content:space-between; gap:20px; align-items:center;
+  }
+  .foot-legal{font-size:.85rem; color:var(--ink-soft); max-width:52ch}
+  .foot-domain{
+    font-family:"Bricolage Grotesque",system-ui,sans-serif; font-weight:700;
+    font-size:1.18rem; letter-spacing:-.02em; color:var(--ink); margin:0 0 6px;
+  }
+  .foot-domain span{color:var(--primary)}
+  .foot-links{display:flex; gap:18px; list-style:none; padding:0; margin:0; font-size:.88rem}
+  .foot-links a{text-decoration:none; color:var(--ink-soft)}
+  .foot-links a:hover{color:var(--primary)}
+
+  @media print{
+    @page{ margin:14mm 12mm; }
+    .nav{position:static; backdrop-filter:none; background:var(--paper)}
+    .nav-links{display:none}
+    .nav-cta{box-shadow:none}
+    .brand-word{white-space:nowrap}
+    section{padding-block:22px}
+    .hero{padding-block:18px 22px}
+    .hero-grid{grid-template-columns:1.2fr .8fr; gap:28px}
+    .hero-art{max-width:230px}
+    .sec-head{margin-bottom:22px}
+    .svc-card,.trust-item,.contact-card,.quick-row,.sec-head,.steps,.areas-grid{break-inside:avoid; page-break-inside:avoid}
+    .svc-grid{grid-template-columns:repeat(3,1fr); gap:12px}
+    .svc-card{padding:16px}
+    .steps{gap:14px}
+    .contact-grid{gap:24px}
+    footer{padding-block:24px}
+    .trust{ -webkit-print-color-adjust:exact; print-color-adjust:exact }
+    footer{break-inside:avoid}
+  }
+  .placeholder-flag{
+    background:var(--accent-tint); color:var(--accent);
+    border-radius:8px; padding:2px 8px; font-size:.66rem; font-weight:700;
+    margin-left:6px; vertical-align:middle;
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap nav-row">
+    <a class="brand" href="#top">
+      <svg class="brand-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle class="bm-bg" cx="20" cy="20" r="19"/>
+        <path class="bm-leaf" d="M20 30C20 30 11 24.5 11 17.5C11 13.9 13.7 11 17.2 11C18.9 11 20 12 20 12C20 12 21.1 11 22.8 11C26.3 11 29 13.9 29 17.5C29 24.5 20 30 20 30Z"/>
+        <path class="bm-stem" d="M20 12V9" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+      <span class="brand-word">The House <b>Help</b></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#how">How it works</a></li>
+      <li><a href="#trust">Verification</a></li>
+      <li><a href="#areas">Areas</a></li>
+    </ul>
+    <a class="nav-cta" href="#contact">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.36 2 11.7c0 2.1.72 4.03 1.94 5.62L2.6 21.4c-.15.44.27.85.7.7l3.94-1.3A10.3 10.3 0 0 0 12 21.4c5.52 0 10-4.36 10-9.7S17.52 2 12 2Zm5.3 13.86c-.23.63-1.15 1.15-1.86 1.27-.5.08-1.15.15-3.34-.7-2.83-1.13-4.67-3.96-4.81-4.15-.14-.19-1.16-1.53-1.16-2.92 0-1.39.74-2.07 1-2.35.23-.25.5-.31.67-.31h.48c.16 0 .37-.06.58.44.23.55.77 1.9.84 2.04.07.14.11.3.02.48-.08.19-.13.3-.26.46-.13.16-.28.35-.4.47-.13.13-.27.28-.12.55.15.28.68 1.12 1.46 1.81 1.01.9 1.85 1.18 2.13 1.31.28.14.44.12.6-.07.16-.19.68-.79.86-1.06.18-.28.36-.23.6-.14.25.09 1.6.75 1.87.89.28.14.46.2.53.32.07.11.07.65-.17 1.28Z"/></svg>
+      WhatsApp Us
+    </a>
+  </div>
+</nav>
+
+<main id="top">
+  <!-- ================= HERO ================= -->
+  <header class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow mono">Gurugram &amp; Delhi NCR</span>
+        <h1>Trusted house help, <em>vetted</em> before they walk into your home.</h1>
+        <p class="lede">Maids, cooks, drivers, nannies, elder-care attendants and office boys — matched to your household and checked out properly, not just referred.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="#contact">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.36 2 11.7c0 2.1.72 4.03 1.94 5.62L2.6 21.4c-.15.44.27.85.7.7l3.94-1.3A10.3 10.3 0 0 0 12 21.4c5.52 0 10-4.36 10-9.7S17.52 2 12 2Zm5.3 13.86c-.23.63-1.15 1.15-1.86 1.27-.5.08-1.15.15-3.34-.7-2.83-1.13-4.67-3.96-4.81-4.15-.14-.19-1.16-1.53-1.16-2.92 0-1.39.74-2.07 1-2.35.23-.25.5-.31.67-.31h.48c.16 0 .37-.06.58.44.23.55.77 1.9.84 2.04.07.14.11.3.02.48-.08.19-.13.3-.26.46-.13.16-.28.35-.4.47-.13.13-.27.28-.12.55.15.28.68 1.12 1.46 1.81 1.01.9 1.85 1.18 2.13 1.31.28.14.44.12.6-.07.16-.19.68-.79.86-1.06.18-.28.36-.23.6-.14.25.09 1.6.75 1.87.89.28.14.46.2.53.32.07.11.07.65-.17 1.28Z"/></svg>
+            Tell us what you need
+          </a>
+          <a class="btn btn-ghost" href="tel:+919891183024">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8Z"/></svg>
+            Call +91 98911 83024
+          </a>
+        </div>
+        <div class="trust-strip mono">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>ID &amp; address checked</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Trial period</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Free replacement</span>
+        </div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <svg viewBox="0 0 420 420" xmlns="http://www.w3.org/2000/svg">
+          <circle class="ha-bg" cx="210" cy="210" r="196"/>
+          <circle class="ha-ring" cx="210" cy="210" r="196" stroke-width="1.5"/>
+          <g class="ha-plant" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M96 214 L210 120 L324 214"/>
+            <path d="M124 200 V312 H296 V200"/>
+            <path d="M186 312 V262 a24 24 0 0 1 48 0 V312"/>
+            <rect x="146" y="228" width="42" height="36" rx="3"/>
+            <path d="M167 228 V264 M146 246 H188"/>
+          </g>
+          <g class="ha-plant" stroke-width="2.6" stroke-linecap="round">
+            <path d="M272 288 V252"/>
+            <path d="M272 266c-9-14-24-18-36-13 4 15 18 25 36 19"/>
+            <path d="M272 262c9-14 24-18 36-13-4 15-18 25-36 19"/>
+          </g>
+          <path class="ha-pot" stroke-width="2.6" stroke-linejoin="round" d="M254 288 h36 l-6 24 h-24 z"/>
+          <path class="ha-line" d="M74 312 H346" stroke-width="4" stroke-linecap="round"/>
+          <circle class="ha-dot" cx="66" cy="312" r="5.5"/>
+          <circle class="ha-dot" cx="354" cy="312" r="5.5"/>
+        </svg>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= SERVICES ================= -->
+  <section class="services" id="services">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="mono">What we staff</span>
+        <h2>One agency, every role your home or office runs on.</h2>
+        <p>Every placement starts with a written brief from you — hours, days off, language, and the specific tasks — so who we send actually fits.</p>
+      </div>
+      <div class="svc-grid">
+
+        <div class="svc-card">
+          <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 20l6-16 6 16"/><path d="M9 12h6"/><path d="M4 20h16"/></svg></div>
+          <h3>Maid &amp; housekeeping</h3>
+          <p>Daily or live-in help for cleaning, laundry, dishes and general upkeep, part-time or full-time.</p>
+        </div>
+
+        <div class="svc-card">
+          <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="8"/><path d="M9 12a3 3 0 0 1 6 0"/><path d="M12 4v2M9 4v1M15 4v1"/></svg></div>
+          <h3>Cook</h3>
+          <p>North/South Indian, regional or diet-specific cooking — matched to how your household actually eats.</p>
+        </div>
+
+        <div class="svc-card">
+          <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="11" width="18" height="6" rx="2"/><circle cx="7.5" cy="18" r="1.6"/><circle cx="16.5" cy="18" r="1.6"/><path d="M5 11l1.5-4h11L19 11"/></svg></div>
+          <h3>Driver</h3>
+          <p>Licence-verified personal or family drivers, for daily commute, school runs or on-call duty.</p>
+        </div>
+
+        <div class="svc-card">
+          <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-4.35-9.5-8.8C.8 8.8 2.6 5 6.2 5c2 0 3.3 1.1 3.8 2 .5-.9 1.8-2 3.8-2 3.6 0 5.4 3.8 3.7 7.2C19 16.65 12 21 12 21Z"/></svg></div>
+          <h3>Elderly care</h3>
+          <p>Companionship, mobility support and daily-routine assistance for ageing parents at home.</p>
+        </div>
+
+        <div class="svc-card">
+          <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="7" r="3.2"/><path d="M6 20c0-4 2.7-6 6-6s6 2 6 6"/></svg></div>
+          <h3>Nanny &amp; babysitting</h3>
+          <p>Full-time nannies or evening/weekend babysitting, with childcare experience we verify with references.</p>
+        </div>
+
+        <div class="svc-card">
+          <div class="svc-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M3 12h18"/></svg></div>
+          <h3>Office boy / peon</h3>
+          <p>Pantry, courier runs, filing and general office support for small offices and clinics.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= HOW IT WORKS ================= -->
+  <section id="how">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="mono">How it works</span>
+        <h2>From brief to placement, in four steps.</h2>
+      </div>
+      <div class="steps">
+        <div class="step"><span class="step-num">01</span><h3>Share your requirement</h3><p>WhatsApp or call us with the role, hours and any language or skill needs.</p></div>
+        <div class="step"><span class="step-num">02</span><h3>We shortlist candidates</h3><p>You get 2–3 verified profiles, not a random referral.</p></div>
+        <div class="step"><span class="step-num">03</span><h3>Meet &amp; start a trial</h3><p>Interview at home, then a short paid trial before you commit.</p></div>
+        <div class="step"><span class="step-num">04</span><h3>Ongoing support</h3><p>One point of contact if anything needs adjusting — including replacement.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TRUST ================= -->
+  <section class="trust" id="trust">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="mono">Why families trust us</span>
+        <h2>Verification isn't an afterthought — it's the first step.</h2>
+      </div>
+      <div class="trust-grid">
+        <div class="trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M6 17c0-2 1.5-3 3-3s3 1 3 3"/><path d="M14 9h4M14 13h4"/></svg>
+          <div><h3>ID &amp; address verification</h3><p>Every candidate's government ID and address are checked before we share their profile with you.</p></div>
+        </div>
+        <div class="trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2 4 6v6c0 5 3.4 8.7 8 10 4.6-1.3 8-5 8-10V6l-8-4Z"/><path d="M9 12l2 2 4-4"/></svg>
+          <div><h3>Reference checks</h3><p>We call previous employers directly rather than taking a resume at face value.</p></div>
+        </div>
+        <div class="trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12a9 9 0 1 0 9-9"/><path d="M3 5v5h5"/></svg>
+          <div><h3>Paid trial period</h3><p>Start with a short trial so both sides know it's a fit before a longer commitment.</p></div>
+        </div>
+        <div class="trust-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 12h16M4 12l4-4M4 12l4 4"/></svg>
+          <div><h3>Free replacement</h3><p>If it isn't working out within the agreed window, we find a replacement at no extra agency fee.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= AREAS ================= -->
+  <section id="areas">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="mono">Where we operate</span>
+        <h2>Currently serving Gurugram, expanding across Delhi NCR.</h2>
+      </div>
+      <div class="areas-grid">
+        <span class="chip">DLF Phases 1–5</span>
+        <span class="chip">Sushant Lok</span>
+        <span class="chip">Golf Course Road</span>
+        <span class="chip">Sector 14 / 15 / 21</span>
+        <span class="chip">Sohna Road</span>
+        <span class="chip">South City I &amp; II</span>
+        <span class="chip">Palam Vihar</span>
+        <span class="chip">and nearby areas</span>
+      </div>
+      <p class="areas-note">Sample list<span class="placeholder-flag">edit me</span> — swap in the exact sectors/localities you actually cover before this goes live.</p>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT ================= -->
+  <section class="contact" id="contact">
+    <div class="wrap contact-grid">
+      <div>
+        <div class="sec-head" style="margin-bottom:24px">
+          <span class="mono">Get in touch</span>
+          <h2>Tell us what your household needs.</h2>
+          <p>Fastest way to hear back is WhatsApp — fill this in and it opens a pre-written message for you to send.</p>
+        </div>
+        <div class="contact-quick">
+          <a class="quick-row" href="https://wa.me/919891183024" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.36 2 11.7c0 2.1.72 4.03 1.94 5.62L2.6 21.4c-.15.44.27.85.7.7l3.94-1.3A10.3 10.3 0 0 0 12 21.4c5.52 0 10-4.36 10-9.7S17.52 2 12 2Z"/></svg>
+            <div><div class="label">WhatsApp</div><div class="value">+91 98911 83024</div></div>
+          </a>
+          <a class="quick-row" href="tel:+919891183024">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8Z"/></svg>
+            <div><div class="label">Call</div><div class="value">+91 98911 83024</div></div>
+          </a>
+          <div class="quick-row" style="cursor:default">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12Z"/><circle cx="12" cy="9" r="2.5"/></svg>
+            <div><div class="label">Service area</div><div class="value">Gurugram &amp; Delhi NCR</div></div>
+          </div>
+        </div>
+      </div>
+
+      <form class="contact-card" id="enquiry-form">
+        <div class="field">
+          <label for="f-name">Your name</label>
+          <input id="f-name" name="name" type="text" placeholder="e.g. Rohan Malhotra" required>
+        </div>
+        <div class="field">
+          <label for="f-service">Service needed</label>
+          <select id="f-service" name="service">
+            <option>Maid / Housekeeping</option>
+            <option>Cook</option>
+            <option>Driver</option>
+            <option>Elderly care</option>
+            <option>Nanny / Babysitting</option>
+            <option>Office boy</option>
+            <option>Not sure yet</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="f-area">Your area</label>
+          <input id="f-area" name="area" type="text" placeholder="e.g. Sector 56, Gurugram">
+        </div>
+        <div class="field">
+          <label for="f-note">Anything specific?</label>
+          <textarea id="f-note" name="note" placeholder="Hours, days off needed, language preference, etc."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.36 2 11.7c0 2.1.72 4.03 1.94 5.62L2.6 21.4c-.15.44.27.85.7.7l3.94-1.3A10.3 10.3 0 0 0 12 21.4c5.52 0 10-4.36 10-9.7S17.52 2 12 2Z"/></svg>
+          Send via WhatsApp
+        </button>
+        <p class="form-note">Opens WhatsApp with your details pre-filled — nothing is sent until you hit send there.</p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot-row">
+    <div class="foot-legal">
+      <p class="foot-domain">thehouse<span>.help</span></p>
+      <p style="margin:0">The House Help is a placement &amp; staffing service operated by Shiv Ganga Placement Pvt Ltd.<span class="placeholder-flag">confirm registered address</span></p>
+    </div>
+    <ul class="foot-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#trust">Verification</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var form = document.getElementById('enquiry-form');
+    if (!form) return;
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var name = document.getElementById('f-name').value.trim();
+      var service = document.getElementById('f-service').value;
+      var area = document.getElementById('f-area').value.trim();
+      var note = document.getElementById('f-note').value.trim();
+      var lines = [
+        'Hi, I\'d like to enquire about a placement (via thehouse.help).',
+        'Name: ' + (name || '-'),
+        'Service needed: ' + service,
+        'Area: ' + (area || '-'),
+      ];
+      if (note) lines.push('Details: ' + note);
+      var text = encodeURIComponent(lines.join('\n'));
+      window.open('https://wa.me/919891183024?text=' + text, '_blank', 'noopener');
+    });
+  })();
+</script>
+</body>
+</html>
