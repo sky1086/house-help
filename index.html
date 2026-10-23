@@ -566,6 +566,14 @@
         'Service needed: ' + service,
         'Area: ' + (area || '-'),
       ];
+      //tag to track conversion
+      gtag('event', 'conversion', {
+          'send_to': 'AW-11345847510/OrsmCOam2qYdENbJj6Iq',
+          'name': name,
+          'service': service,
+          'area': area
+      });
+      
       if (note) lines.push('Details: ' + note);
       var text = encodeURIComponent(lines.join('\n'));
       window.open('https://wa.me/919891183024?text=' + text, '_blank', 'noopener');
