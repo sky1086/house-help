@@ -6,4 +6,4 @@ Open `index.html` in a browser; no build step.
 
 ## Before going live
 - Replace the sample list of areas with the localities actually covered (look for "edit me").
-- Confirm the registered address in the page footer.
+- Confirm the registered address in the footer.
